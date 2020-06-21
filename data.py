@@ -12,10 +12,8 @@ class dataset(Dataset):
         self.image_root = image_root
         self.data_len = 0
         self.labels = listdir(image_root)
-#         self.labels = ['Bad', 'Good']
         self.data = {}
         self.transform = transforms.Compose([
-#             transforms.Resize((224, 224)),
             transforms.RandomResizedCrop((224)),
             transforms.RandomVerticalFlip(p=0.5),
             transforms.RandomHorizontalFlip(p=0.5),

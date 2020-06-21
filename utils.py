@@ -37,3 +37,16 @@ def visualize_results(loss_b, acc_b):
 
 	plt.subplot(1, 2, 2)
 	plt.plot(acc_b)
+
+def evaluate(data_loader):
+    total, correct = 0, 0
+    for data in data_loader:
+        inputs, labels = data
+        OH_labels = encode_batch(labels, device)
+        inputs = inputs.to(device)
+        outputs = cnn.forward(inputs)
+        pred = torch.max(outputs, 1)[1]
+        total += len(labels)
+        correct += (pred == torch.max(OH_labels, 1)[1]).sum().item()
+
+    print(100 * correct / total)

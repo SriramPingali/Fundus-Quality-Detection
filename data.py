@@ -15,9 +15,11 @@ class dataset(Dataset):
 #         self.labels = ['Bad', 'Good']
         self.data = {}
         self.transform = transforms.Compose([
-            transforms.Resize((224, 224)),
+#             transforms.Resize((224, 224)),
+            transforms.RandomResizedCrop((224)),
+            transforms.RandomVerticalFlip(p=0.5),
+            transforms.RandomHorizontalFlip(p=0.5),
             transforms.ToTensor(),
-#             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
         ])
         
         for label in self.labels:

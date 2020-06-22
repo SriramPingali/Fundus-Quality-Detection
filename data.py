@@ -35,7 +35,7 @@ class dataset(Dataset):
         img = Image.open(img_path)
         img = img.convert('RGB')
         img = self.transform(img)
-        return(img, label)
+        return(img, label, img_path)
 
 def dataloader(dataset, batch_size, validation_split, shuffle_dataset):
     random_seed= 42

@@ -42,13 +42,18 @@ def visualize_results(loss_b, acc_b):
 
 def evaluate(model, data_loader):
     total, correct = 0, 0
+    wrong_paths = []
     for data in data_loader:
-        inputs, labels = data
+        inputs, labels, paths = data
         OH_labels = encode_batch(labels)
         inputs = inputs.to(device)
         outputs = model.forward(inputs)
         pred = torch.max(outputs, 1)[1]
         total += len(labels)
         correct += (pred == torch.max(OH_labels, 1)[1]).sum().item()
-
+        wrong_results = pred != torch.max(OH_labels, 1)[1]
+        wrong_paths.extend([paths[i] for i in range(len(wrong_results)) if wrong_results[i]])
     print(100 * correct / total)
+    return(wrong_paths)
+
+# def grad_cam(image)

@@ -59,6 +59,13 @@ We use the DRIMDB (Diabetic Retinopathy Image Database) dataset to classify fund
   
   <img src="https://user-images.githubusercontent.com/43778095/85285959-6c736600-b4af-11ea-9a4e-295d3daf1d61.png" width="250" height="250" title = "Blood Vessels">
   
+# Repository
+  - Fundus.ipynb - Jupyter notebook where the whole training takes place
+  - GradCAM.ipynb - Jupyter notebook where gradcam is applied on falsely classified images for debugging
+  - data.py - Script which contains the custom dataset class and dataloader functions
+  - model.py - Contains the class AlexNet which has the architecture of the CNN
+  - utils.py - Utility functions
+  
 # Training
   We choose the AlexNet architecture which is a relatively simpler architecture and good enough for the task at hand. 
   The model architecture is presemt in model.py. The whole training process is present in Fundus.ipynb. Run the whole
@@ -79,3 +86,14 @@ We use the DRIMDB (Diabetic Retinopathy Image Database) dataset to classify fund
   ## GradCAM visualization
   True Positives:
   <img src="https://user-images.githubusercontent.com/43778095/85308915-79a04d00-b4cf-11ea-9db0-b82c43f29784.png" width="1000" height="250">
+  
+  We can see that the model is learning to identify parts like optical disc and some veins to declare the above image as a true positive.
+  
+  On exploration with the false positives and false negatives, I noticed that many of the outliers are classified incorrectly. 
+  Which could be explained because they show geatures like pupil which the model interprets as an optic disc. 
+  Also the blood vessels on the sclera also reinforce that conclusion.
+
+# Future Work
+  - Outlier images are usually classified wrong, come up with a clever solution to solve this
+  - Try other architectures
+  - Try other augmentations

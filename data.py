@@ -7,14 +7,22 @@ from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 from torch.utils.data.sampler import SubsetRandomSampler
 
+# Custom Dataset for DRIMDB dataset
+
 class dataset(Dataset):
     def __init__(self, image_root):
+        
+        # Image root is the path to DRIMDB folder
         self.image_root = image_root
         self.data_len = 0
+        
+        # DRIMDB contains three folders which indicate the label of images.
         self.labels = listdir(image_root)
         self.data = {}
+        
+        # Augmentation
         self.transform = transforms.Compose([
-            transforms.RandomResizedCrop((224)),
+            transforms.Resize((224)),
             transforms.RandomVerticalFlip(p=0.5),
             transforms.RandomHorizontalFlip(p=0.5),
             transforms.ToTensor(),

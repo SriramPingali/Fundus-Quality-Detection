@@ -40,7 +40,7 @@ def visualize_results(loss_b, acc_b):
     plt.subplot(1, 2, 2)
     plt.plot(acc_b)
 
-def evaluate(model, data_loader):
+def evaluate(model, data_loader, wrong_path = False):
     total, correct = 0, 0
     wrong_paths = []
     for data in data_loader:
@@ -54,6 +54,5 @@ def evaluate(model, data_loader):
         wrong_results = pred != torch.max(OH_labels, 1)[1]
         wrong_paths.extend([paths[i] for i in range(len(wrong_results)) if wrong_results[i]])
     print(100 * correct / total)
-    return(wrong_paths)
-
-# def grad_cam(image)
+    if wrong_path:
+        return(wrong_paths)

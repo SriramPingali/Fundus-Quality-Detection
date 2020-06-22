@@ -44,6 +44,9 @@ We use the DRIMDB (Diabetic Retinopathy Image Database) dataset to classify fund
   pip install pillow
   pip install matplotlib
   ```
+  Here's a link to the DIRMDB dataset.
+
+  http://academictorrents.com/details/99811ba62918f8e73791d21be29dcc372d660305
 
 # Approach
   Through visual data analysis, we can see that good quality images tend to show the important features of the eye like
@@ -97,3 +100,4 @@ We use the DRIMDB (Diabetic Retinopathy Image Database) dataset to classify fund
   - Outlier images are usually classified wrong, come up with a clever solution to solve this
   - Try other architectures
   - Try other augmentations
+  - Library for hyper parameter tuning

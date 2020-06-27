@@ -71,7 +71,7 @@ We use the DRIMDB (Diabetic Retinopathy Image Database) dataset to classify fund
   
 # Training
   We choose the AlexNet architecture which is a relatively simpler architecture and good enough for the task at hand. 
-  The model architecture is presemt in model.py. The whole training process is present in Fundus.ipynb. Run the whole
+  The model architecture is present in model.py. The whole training process is present in Fundus.ipynb. Run the whole
   notebook to train the model, save checkpoint for best model, visualize the training process and resulting test set accuracy.
   
   Hyper parameters:
